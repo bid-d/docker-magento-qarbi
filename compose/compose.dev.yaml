@@ -23,10 +23,16 @@ services:
   phpfpm:
     volumes: *appvolumes
 
-  phpmyadmin:
-    image: linuxserver/phpmyadmin
+  adminer:
+    restart: always
+    image: adminer
     env_file: env/db.env
+    expose:
+      - "8080"
     ports:
-      - "8080:80"
+      - "8088:80"
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DESIGN: "pappu687"
     depends_on:
       - db
