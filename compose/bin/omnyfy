@@ -72,7 +72,7 @@ echo -e "${BGREEN}What project do you want to install?${NC}"
 select project in "Gini" "Wippet" "CCNB" "Others"; do
     case $project in
         Gini ) 
-        sed -i 's/biddd\/omnyfy-phpfpm:7.4-fpm-1/biddd\/omnyfy-phpfpm:7.4-fpm-gini-2/g' docker-compose.yml;
+        sed -i 's/biddd\/omnyfy-phpfpm:7.4-fpm-1/biddd\/omnyfy-phpfpm:7.4-fpm-gini-2/g' compose.yml;
         break;;
         Wippet ) break;;
         CCNB ) break;;
@@ -157,13 +157,13 @@ version=${version:46:3}
 
 # Setup Database
 if [[ $version = "2.2" ]]; then
-    sed -i 's/biddd\/omnyfy-phpfpm:7.4-fpm-1/biddd\/omnyfy-phpfpm:7.1-fpm-1/g' docker-compose.yml
-    sed -i 's/biddd\/php-fpm:7.4-fpm-7/biddd\/php-fpm:7.1-fpm-13/g' docker-compose.yml
+    sed -i 's/biddd\/omnyfy-phpfpm:7.4-fpm-1/biddd\/omnyfy-phpfpm:7.1-fpm-1/g' compose.yml
+    sed -i 's/biddd\/php-fpm:7.4-fpm-7/biddd\/php-fpm:7.1-fpm-13/g' compose.yml
 fi
 
 cp env.example.php src/app/etc/env.php
 
-docker-compose -f docker-compose.yml up -d
+docker-compose -f compose.yml up -d
 
 echo -e "\n${BGREEN}Waiting for all containers to start up ...\n${NC}"
 sleep 15
