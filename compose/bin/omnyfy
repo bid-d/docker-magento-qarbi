@@ -227,7 +227,8 @@ fi
 # Clear files
 rm "$DB"
 rm -rf "$PROJECT"
-
+rm src/nginx.conf.sample
+cp nginx.conf.sample src/
 
 bin/restart
 
